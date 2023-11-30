@@ -8,71 +8,45 @@ import { Product } from 'src/app/types/product.model';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  product: Product = {
-    id: 0,
-    name: '',
-    price: 0,
-    description: '',
-    rating: 0,
-    image: '',
-    category: '',
-    brand: '',
-  };
-  // edit = true;
-  // add = false;
   products: Product[];
+  filteredProducts: Product[];
+  categories: string[] = [
+    'All',
+    'Desktop',
+    'Laptop',
+    'Software',
+    'Hardware',
+    'Tablet',
+    'Accessories',
+  ];
+  selectedCategory: string = 'All';
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.getProducts();
+    this.selectCategory('All');
   }
 
   private getProducts() {
-    this.productService
-      .getProducts()
-      .subscribe((products) => (this.products = products));
+    this.productService.getProducts().subscribe((products) => {
+      this.products = products;
+      this.filterProducts();
+    });
   }
 
-  // addProduct() {
-  //   const data = {
-  //     name: this.product.name,
-  //     id: this.product.id,
-  //   };
-  //   this.productService.createProduct(data).subscribe((response) => {
-  //     console.log(response);
-  //     this.getProducts();
-  //   });
-  // }
+  selectCategory(category: string) {
+    this.selectedCategory = category;
+    this.filterProducts();
+  }
 
-  // setProductEdit(product: Product) {
-  //   this.product.name = product.name;
-  //   this.product.id = product.id;
-  //   this.edit = false;
-  //   this.add = true;
-  // }
-
-  // resetValues() {
-  //   this.product.name = '';
-  //   this.product.id = null;
-  //   this.edit = true;
-  //   this.add = false;
-  // }
-
-  // removeProduct(product: Product) {
-  //   const id = product.id;
-  //   console.log(product);
-  //   this.productService
-  //     .deleteProduct(id)
-  //     .subscribe((product) => console.log(product));
-  //   this.getProducts();
-  // }
-
-  // updateProduct() {
-  //   this.productService
-  //     .editProduct(this.product)
-  //     .subscribe((response) => console.log(response));
-  //   this.getProducts();
-  //   this.resetValues();
-  // }
+  private filterProducts() {
+    if (this.selectedCategory === 'All') {
+      this.filteredProducts = this.products;
+    } else {
+      this.filteredProducts = this.products.filter(
+        (product) => product.category === this.selectedCategory
+      );
+    }
+  }
 }

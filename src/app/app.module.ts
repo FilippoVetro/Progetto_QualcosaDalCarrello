@@ -2,18 +2,28 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { ProductsModule } from './products.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './services/data.service';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { ProductCardBgComponent } from './components/product-card-bg/product-card-bg.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    ProductListComponent,
+    ProductCardBgComponent,
+    HomeComponent,
+  ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
-    ProductsModule,
     MaterialModule,
+    CommonModule,
     HttpClientInMemoryWebApiModule.forRoot(DataService),
     BrowserAnimationsModule,
   ],
