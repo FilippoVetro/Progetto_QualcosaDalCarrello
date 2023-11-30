@@ -8,9 +8,15 @@ import { Product } from 'src/app/types/product.model';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  product = {
+  product: Product = {
+    id: 0,
     name: '',
-    id: null,
+    price: 0,
+    description: '',
+    rating: 0,
+    image: '',
+    category: '',
+    brand: '',
   };
   edit = true;
   add = false;
@@ -28,45 +34,45 @@ export class ProductListComponent implements OnInit {
       .subscribe((products) => (this.products = products));
   }
 
-  addProduct() {
-    const data = {
-      name: this.product.name,
-      id: this.product.id,
-    };
-    this.productService.createProduct(data).subscribe((response) => {
-      console.log(response);
-      this.getProducts();
-    });
-  }
+  // addProduct() {
+  //   const data = {
+  //     name: this.product.name,
+  //     id: this.product.id,
+  //   };
+  //   this.productService.createProduct(data).subscribe((response) => {
+  //     console.log(response);
+  //     this.getProducts();
+  //   });
+  // }
 
-  setProductEdit(product: Product) {
-    this.product.name = product.name;
-    this.product.id = product.id;
-    this.edit = false;
-    this.add = true;
-  }
+  // setProductEdit(product: Product) {
+  //   this.product.name = product.name;
+  //   this.product.id = product.id;
+  //   this.edit = false;
+  //   this.add = true;
+  // }
 
-  resetValues() {
-    this.product.name = '';
-    this.product.id = null;
-    this.edit = true;
-    this.add = false;
-  }
+  // resetValues() {
+  //   this.product.name = '';
+  //   this.product.id = null;
+  //   this.edit = true;
+  //   this.add = false;
+  // }
 
-  removeProduct(product: Product) {
-    const id = product.id;
-    console.log(product);
-    this.productService
-      .deleteProduct(id)
-      .subscribe((product) => console.log(product));
-    this.getProducts();
-  }
+  // removeProduct(product: Product) {
+  //   const id = product.id;
+  //   console.log(product);
+  //   this.productService
+  //     .deleteProduct(id)
+  //     .subscribe((product) => console.log(product));
+  //   this.getProducts();
+  // }
 
-  updateProduct() {
-    this.productService
-      .editProduct(this.product)
-      .subscribe((response) => console.log(response));
-    this.getProducts();
-    this.resetValues();
-  }
+  // updateProduct() {
+  //   this.productService
+  //     .editProduct(this.product)
+  //     .subscribe((response) => console.log(response));
+  //   this.getProducts();
+  //   this.resetValues();
+  // }
 }

@@ -1,19 +1,26 @@
 <div>
   <input type="text" name="productName" [(ngModel)]="product.name" />
-  <button [hidden]="add" (click)="addProduct()">add Product</button>
-  <button [hidden]="edit" (click)="updateProduct()">Update Product</button>
+  <!-- <button [hidden]="add" (click)="addProduct()">add Product</button>
+  <button [hidden]="edit" (click)="updateProduct()">Update Product</button> -->
 </div>
 <table id="products">
   <tr>
     <th>S/N</th>
     <th>Name</th>
-    <th>Update</th>
-    <th>Delete</th>
+    <th>description</th>
+    <th>price</th>
+    <th>brand</th>
+    <th>rating</th>
   </tr>
   <tr *ngFor="let product of products">
     <td>{{ product.id }}</td>
     <td>{{ product.name }}</td>
-    <td><button (click)="setProductEdit(product)">Update</button></td>
-    <td><button (click)="removeProduct(product)">Delete</button></td>
+    <td>{{ product.description }}</td>
+    <td>{{ product.price | currency }}</td>
+    <td>{{ product.brand }}</td>
+    <td>{{ product.rating }}</td>
+
+    <!-- <td><button (click)="setProductEdit(product)">Update</button></td>
+    <td><button (click)="removeProduct(product)">Delete</button></td> -->
   </tr>
 </table>
