@@ -7,6 +7,7 @@
   <tr>
     <th>S/N</th>
     <th>Name</th>
+    <th>category</th>
     <th>description</th>
     <th>price</th>
     <th>brand</th>
@@ -15,6 +16,7 @@
   <tr *ngFor="let product of products">
     <td>{{ product.id }}</td>
     <td>{{ product.name }}</td>
+    <td>{{ product.category }}</td>
     <td>{{ product.description }}</td>
     <td>{{ product.price | currency }}</td>
     <td>{{ product.brand }}</td>

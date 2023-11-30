@@ -18,8 +18,8 @@ export class ProductListComponent implements OnInit {
     category: '',
     brand: '',
   };
-  edit = true;
-  add = false;
+  // edit = true;
+  // add = false;
   products: Product[];
 
   constructor(private productService: ProductService) {}
