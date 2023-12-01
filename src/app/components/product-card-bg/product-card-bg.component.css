@@ -14,7 +14,7 @@ img {
 }
 .example-card:hover {
   transform: scale(1.05, 1.05);
-  box-shadow: 10px 10px 25px 7px blue;
+  box-shadow: 10px 10px 25px 7px #3f51b5;
 }
 
 .price {
@@ -22,7 +22,7 @@ img {
 }
 
 .cart-btn {
-  background-color: green;
+  background-color: red;
 }
 
 mat-card-actions {

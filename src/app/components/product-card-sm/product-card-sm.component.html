@@ -15,11 +15,11 @@
       {{ product.description }}
     </p>
   </mat-card-content>
-  <mat-card-actions style="display: flex; justify-content: space-between">
-    <mat-card-subtitle style="color: black"
+  <mat-card-actions class="action-section">
+    <mat-card-subtitle class="price-section"
       >Price: {{ product.price | currency }}</mat-card-subtitle
     >
-    <button mat-button style="background-color: green">
+    <button mat-button class="cart-btn">
       {{ "Add To Cart" | uppercase }}
     </button>
   </mat-card-actions>

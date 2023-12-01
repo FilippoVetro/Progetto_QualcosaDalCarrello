@@ -9,7 +9,9 @@
         {{ category | uppercase }}
       </button>
     </div>
-    <button (click)="changeView()">Change View</button>
+    <button mat-button (click)="changeView()" class="change-view-btn">
+      {{ isGrid ? "List View" : "Grid View" }}
+    </button>
     <mat-form-field>
       <mat-label>Choose an option</mat-label>
       <mat-select [disabled]="!isGrid" [(value)]="sizeCard">
