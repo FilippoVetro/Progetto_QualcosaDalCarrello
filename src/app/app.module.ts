@@ -12,13 +12,25 @@ import { ProductCardBgComponent } from './components/product-card-bg/product-car
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CommonModule } from '@angular/common';
 import { ShopPageComponent } from './components/shop-page/shop-page.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { SupportComponent } from './components/support/support.component';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
+    NavbarComponent,
     ProductCardBgComponent,
     HomeComponent,
     ShopPageComponent,
+    ContactsComponent,
+    OrdersComponent,
+    SupportComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +40,8 @@ import { ShopPageComponent } from './components/shop-page/shop-page.component';
     CommonModule,
     HttpClientInMemoryWebApiModule.forRoot(DataService),
     BrowserAnimationsModule,
+    FormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
