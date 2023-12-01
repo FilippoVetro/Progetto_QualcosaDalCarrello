@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/types/product.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductDetailModulComponent } from '../product-detail-modul/product-detail-modul.component';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -26,7 +29,9 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +43,18 @@ export class ProductListComponent implements OnInit {
       this.isCategory = false;
       this.filteredProducts = this.products;
     }
+  }
+
+  openModal(product: any) {
+    const dialogRef =this.dialog.open(ProductDetailModulComponent, {  
+      data: product, 
+      width: '500px' });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if(result) {
+          this.cartService.addToCart(result);
+        }
+      });  
   }
 
   private getProducts() {
