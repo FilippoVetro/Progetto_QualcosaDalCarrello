@@ -10,6 +10,7 @@ export const products: Product[] = [
     image: 'laptop_x1.jpg',
     category: 'Laptop',
     brand: 'TechCo',
+    soldNumber: 10,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const products: Product[] = [
     image: 'desktop_pro.jpg',
     category: 'Desktop',
     brand: 'TechMaster',
+    soldNumber: 15,
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ export const products: Product[] = [
     image: 'tablet_slim.jpg',
     category: 'Tablet',
     brand: 'MobileTech',
+    soldNumber: 23,
   },
   {
     id: 4,
@@ -40,6 +43,7 @@ export const products: Product[] = [
     image: 'keyboard_deluxe.jpg',
     category: 'Accessories',
     brand: 'GamerGear',
+    soldNumber: 2,
   },
   {
     id: 5,
@@ -50,6 +54,7 @@ export const products: Product[] = [
     image: 'graphics_card_turbo.jpg',
     category: 'Hardware',
     brand: 'TechSpeed',
+    soldNumber: 9,
   },
   {
     id: 6,
@@ -60,6 +65,7 @@ export const products: Product[] = [
     image: 'antivirus_pro.jpg',
     category: 'Software',
     brand: 'SafeGuard',
+    soldNumber: 8,
   },
   {
     id: 7,
@@ -70,6 +76,7 @@ export const products: Product[] = [
     image: 'gaming_laptop_ultra.jpg',
     category: 'Laptop',
     brand: 'GamerTech',
+    soldNumber: 16,
   },
   {
     id: 8,
@@ -80,6 +87,7 @@ export const products: Product[] = [
     image: 'all_in_one_desktop.jpg',
     category: 'Desktop',
     brand: 'TechSolutions',
+    soldNumber: 87,
   },
   {
     id: 9,
@@ -90,6 +98,7 @@ export const products: Product[] = [
     image: 'convertible_tablet_pro.jpg',
     category: 'Tablet',
     brand: 'FlexTech',
+    soldNumber: 35,
   },
   {
     id: 10,
@@ -100,6 +109,7 @@ export const products: Product[] = [
     image: 'wireless_mouse_elite.jpg',
     category: 'Accessories',
     brand: 'TechEssentials',
+    soldNumber: 8,
   },
   {
     id: 11,
@@ -110,6 +120,7 @@ export const products: Product[] = [
     image: 'ram_hyperx_fury.jpg',
     category: 'Hardware',
     brand: 'HyperX',
+    soldNumber: 19,
   },
   {
     id: 12,
@@ -120,6 +131,7 @@ export const products: Product[] = [
     image: 'video_editing_software_pro.jpg',
     category: 'Software',
     brand: 'EditMaster',
+    soldNumber: 7,
   },
   {
     id: 13,
@@ -130,6 +142,7 @@ export const products: Product[] = [
     image: 'ultrabook_slim.jpg',
     category: 'Laptop',
     brand: 'BusinessTech',
+    soldNumber: 19,
   },
   {
     id: 14,
@@ -140,6 +153,7 @@ export const products: Product[] = [
     image: 'mini_pc_compact.jpg',
     category: 'Desktop',
     brand: 'MicroSystems',
+    soldNumber: 56,
   },
   {
     id: 15,
@@ -150,6 +164,7 @@ export const products: Product[] = [
     image: 'android_tablet_plus.jpg',
     category: 'Tablet',
     brand: 'TechPad',
+    soldNumber: 17,
   },
   {
     id: 16,
@@ -160,6 +175,7 @@ export const products: Product[] = [
     image: 'mechanical_keyboard_pro.jpg',
     category: 'Accessories',
     brand: 'ProKey',
+    soldNumber: 4,
   },
   {
     id: 17,
@@ -170,6 +186,7 @@ export const products: Product[] = [
     image: 'ssd_turbo_boost.jpg',
     category: 'Hardware',
     brand: 'SpeedTech',
+    soldNumber: 9,
   },
   {
     id: 18,
@@ -180,5 +197,6 @@ export const products: Product[] = [
     image: 'audio_editing_software_studio.jpg',
     category: 'Software',
     brand: 'AudioMaster',
+    soldNumber: 4,
   },
 ];
