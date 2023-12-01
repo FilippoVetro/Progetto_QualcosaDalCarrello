@@ -11,12 +11,14 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductCardBgComponent } from './components/product-card-bg/product-card-bg.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CommonModule } from '@angular/common';
+import { ShopPageComponent } from './components/shop-page/shop-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     ProductCardBgComponent,
     HomeComponent,
+    ShopPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,23 @@
 <div class="main-container">
   <div class="shop-top-bar">
     <div *ngFor="let category of categories">
-      <button class="category-selector" (click)="selectCategory(category)">
+      <button
+        class="category-selector {{ category | lowercase }}"
+        (click)="selectCategory(category)"
+        routerLink="/shop/{{ category | lowercase }}"
+      >
         {{ category | uppercase }}
       </button>
     </div>
+    <button (click)="changeView()">Change View</button>
   </div>
   <div class="products-container" *ngFor="let product of filteredProducts">
-    <app-product-card-bg [product]="product"></app-product-card-bg>
+    <div *ngIf="isGrid; then gridView; else listView"></div>
+    <ng-template #gridView>
+      <app-product-card-bg [product]="product"></app-product-card-bg>
+    </ng-template>
+    <ng-template #listView>
+      <div>list</div>
+    </ng-template>
   </div>
 </div>
