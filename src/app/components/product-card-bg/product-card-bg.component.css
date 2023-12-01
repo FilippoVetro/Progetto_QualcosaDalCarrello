@@ -1,12 +1,32 @@
 .example-card {
-  max-width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 60vw;
+  border: 2px solid black;
   margin: 1rem;
+  box-shadow: 10px 10px 25px 7px grey;
+}
+img {
+  height: 300px;
+  width: 300px;
 }
 .example-card:hover {
   transform: scale(1.05, 1.05);
+  box-shadow: 10px 10px 25px 7px blue;
 }
 
-.example-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-size: cover;
+.price {
+  color: black;
+}
+
+.cart-btn {
+  background-color: green;
+}
+
+mat-card-actions {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
 }

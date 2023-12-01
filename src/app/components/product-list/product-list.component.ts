@@ -9,7 +9,9 @@ import { Product } from 'src/app/types/product.model';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  isGrid: boolean = true;
+  sizeCard: string = 'lg';
+  isGrid: boolean = false;
+  // isGrid: boolean = true;
   products: Product[];
   filteredProducts: Product[];
   isCategory: boolean;

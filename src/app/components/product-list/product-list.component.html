@@ -10,14 +10,27 @@
       </button>
     </div>
     <button (click)="changeView()">Change View</button>
+    <mat-form-field>
+      <mat-label>Choose an option</mat-label>
+      <mat-select [disabled]="!isGrid" [(value)]="sizeCard">
+        <mat-option value="sm">Small</mat-option>
+        <mat-option value="md">Medium</mat-option>
+        <mat-option value="lg">Large</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <div class="products-container" *ngFor="let product of filteredProducts">
-    <div *ngIf="isGrid; then gridView; else listView"></div>
-    <ng-template #gridView>
-      <app-product-card-bg [product]="product"></app-product-card-bg>
-    </ng-template>
-    <ng-template #listView>
-      <div>list</div>
-    </ng-template>
+  <div class="products-container" [class.grid]="isGrid">
+    <div *ngFor="let product of filteredProducts">
+      <div *ngIf="isGrid; then gridView; else listView"></div>
+      <ng-template #listView>
+        <app-product-card-bg [product]="product"></app-product-card-bg>
+      </ng-template>
+      <ng-template #gridView>
+        <app-product-card-sm
+          [product]="product"
+          [sizeCard]="sizeCard"
+        ></app-product-card-sm>
+      </ng-template>
+    </div>
   </div>
 </div>
