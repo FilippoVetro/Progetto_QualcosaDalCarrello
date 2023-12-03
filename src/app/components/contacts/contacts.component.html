@@ -1,1 +1,41 @@
-<p>contacts works!</p>
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Contacts</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="map">
+        <img src="assets/images/map.png" alt="map">
+      </div>
+  
+      <div class="address">
+        <h2>Office Address</h2>
+        <p>Qualcosa dal carrello</p>
+        <p>Via Milano 10</p>
+        <p>Brescia, Italy</p>
+      </div>
+  
+      <div class="phone-fax">
+        <h2>Contact Information</h2>
+        <p>Telephone: +1 123-456-7890</p>
+        <p>Fax: +1 123-456-7891</p>
+      </div>
+  
+      <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form (ngSubmit)="submitContactForm(form.value)" #form="ngForm">
+          <mat-form-field>
+            <input matInput placeholder="Name" name="name" ngModel required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Email" name="email" ngModel required email>
+          </mat-form-field>
+          <p></p>
+          <mat-form-field>
+            <textarea matInput placeholder="Message" name="message" ngModel required></textarea>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
