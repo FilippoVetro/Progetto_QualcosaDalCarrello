@@ -4,13 +4,15 @@
   align-items: center;
   justify-content: space-between;
   width: 60vw;
+  height: 300px;
   border: 2px solid black;
   margin: 1rem;
   box-shadow: 10px 10px 25px 7px grey;
 }
 img {
-  height: 300px;
-  width: 300px;
+  height: auto;
+  width: 200px;
+  object-fit: scale-down;
 }
 .example-card:hover {
   transform: scale(1.05, 1.05);

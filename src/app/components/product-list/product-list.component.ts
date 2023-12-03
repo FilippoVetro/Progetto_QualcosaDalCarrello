@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/types/product.model';
 
@@ -14,7 +14,6 @@ export class ProductListComponent implements OnInit {
   // isGrid: boolean = true;
   products: Product[];
   filteredProducts: Product[];
-  isCategory: boolean;
   categories: string[] = [
     'All',
     'Desktop',
@@ -34,10 +33,8 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
     if (this.route.snapshot.paramMap.get('id')) {
-      this.isCategory = true;
       this.selectCategory(this.route.snapshot.paramMap.get('category')!);
     } else {
-      this.isCategory = false;
       this.filteredProducts = this.products;
     }
   }
