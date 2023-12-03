@@ -1,28 +1,29 @@
 <mat-card class="example-card">
-  <img mat-card-image src="{{ product.image }}" alt="Photo of product" />
+  <div (click)="openModal(product)" class="content">
+    <img mat-card-image src="{{ product.image }}" alt="Photo of product" />
 
-  <mat-card-header>
-    <mat-card-title>{{ product.name }}</mat-card-title>
-    <mat-card-subtitle>Brand: {{ product.brand }}</mat-card-subtitle>
-    <mat-card-subtitle>Rating: {{ product.rating }}</mat-card-subtitle>
-  </mat-card-header>
+    <mat-card-header>
+      <mat-card-title>{{ product.name }}</mat-card-title>
+      <mat-card-subtitle>Brand: {{ product.brand }}</mat-card-subtitle>
+      <mat-card-subtitle>Rating: {{ product.rating }}</mat-card-subtitle>
+    </mat-card-header>
 
-  <mat-card-content>
-    <div>
-      <mat-card-subtitle
-        >Category: {{ product.category | uppercase }}</mat-card-subtitle
-      >
-      <p>
-        {{ product.description }}
-      </p>
-    </div>
-  </mat-card-content>
-
-  <mat-card-actions>
+    <mat-card-content>
+      <div>
+        <mat-card-subtitle
+          >Category: {{ product.category | uppercase }}</mat-card-subtitle
+        >
+        <p>
+          {{ product.description }}
+        </p>
+      </div>
+    </mat-card-content>
     <mat-card-subtitle class="price"
       >Price: {{ product.price | currency }}</mat-card-subtitle
     >
-    <button mat-button class="cart-btn">
+  </div>
+  <mat-card-actions>
+    <button mat-button class="cart-btn" (click)="addToCart(product)">
       {{ "Add To Cart" | uppercase }}
     </button>
   </mat-card-actions>

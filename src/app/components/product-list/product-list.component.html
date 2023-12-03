@@ -25,10 +25,7 @@
     <div *ngFor="let product of filteredProducts">
       <div *ngIf="isGrid; then gridView; else listView"></div>
       <ng-template #listView>
-        <app-product-card-bg
-          [product]="product"
-          (click)="openModal(product)"
-        ></app-product-card-bg>
+        <app-product-card-bg [product]="product"></app-product-card-bg>
       </ng-template>
       <ng-template #gridView>
         <app-product-card-sm

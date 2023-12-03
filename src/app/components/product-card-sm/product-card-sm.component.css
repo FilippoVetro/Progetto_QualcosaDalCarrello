@@ -1,9 +1,12 @@
 .example-card {
-  height: 200px;
+  height: 250px;
   width: 15vw;
   margin: 1rem;
   box-shadow: 10px 10px 25px 7px grey;
   border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .example-card.sm {
   width: 15vw;
@@ -19,18 +22,13 @@
   transform: scale(1.05, 1.05);
   box-shadow: 10px 10px 25px 7px #3f51b5;
 }
+div.content {
+  height: 90%;
+}
 
 p {
   height: 40px;
   overflow: hidden;
-}
-
-.action-section {
-  display: flex;
-  justify-content: space-between;
-}
-.price-section {
-  color: black;
 }
 
 .cart-btn {

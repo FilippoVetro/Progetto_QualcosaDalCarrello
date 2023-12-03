@@ -4,23 +4,22 @@
   [class.md]="sizeCard === 'md'"
   [class.sm]="sizeCard === 'sm'"
 >
-  <mat-card-header>
-    <mat-card-title>{{ product.name }}</mat-card-title>
-    <mat-card-subtitle>{{ product.brand }}</mat-card-subtitle>
-  </mat-card-header>
+  <div class="content" (click)="openModal(product)">
+    <mat-card-header>
+      <mat-card-title
+        >{{ product.name }} - {{ product.price | currency }}</mat-card-title
+      >
+      <mat-card-subtitle>{{ product.brand }}</mat-card-subtitle>
+    </mat-card-header>
 
-  <mat-card-content>
-    <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
-    <p>
-      {{ product.description }}
-    </p>
-  </mat-card-content>
-  <mat-card-actions class="action-section">
-    <mat-card-subtitle class="price-section"
-      >Price: {{ product.price | currency }}</mat-card-subtitle
-    >
-    <button mat-button class="cart-btn">
-      {{ "Add To Cart" | uppercase }}
-    </button>
-  </mat-card-actions>
+    <mat-card-content>
+      <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+      <p>
+        {{ product.description }}
+      </p>
+    </mat-card-content>
+  </div>
+  <button mat-button class="cart-btn" (click)="addToCart(product)">
+    {{ "Add To Cart" | uppercase }}
+  </button>
 </mat-card>

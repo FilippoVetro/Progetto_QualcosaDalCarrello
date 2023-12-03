@@ -30,9 +30,7 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute,
-    private dialog: MatDialog,
-    private cartService: CartService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -42,18 +40,6 @@ export class ProductListComponent implements OnInit {
     } else {
       this.filteredProducts = this.products;
     }
-  }
-
-  openModal(product: any) {
-    const dialogRef =this.dialog.open(ProductDetailModulComponent, {  
-      data: product, 
-      width: '500px' });
-
-      dialogRef.afterClosed().subscribe(result => {
-        if(result) {
-          this.cartService.addToCart(result);
-        }
-      });  
   }
 
   private getProducts() {

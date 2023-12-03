@@ -9,7 +9,16 @@
   margin: 1rem;
   box-shadow: 10px 10px 25px 7px grey;
 }
+div.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 87%;
+  height: 100%;
+}
 img {
+  margin-left: 3px;
   height: auto;
   width: 200px;
   object-fit: scale-down;
@@ -25,10 +34,4 @@ img {
 
 .cart-btn {
   background-color: red;
-}
-
-mat-card-actions {
-  width: 30%;
-  display: flex;
-  justify-content: space-between;
 }
