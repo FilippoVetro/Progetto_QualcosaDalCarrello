@@ -11,6 +11,7 @@ import { ProductDetailModulComponent } from '../product-detail-modul/product-det
 })
 export class ProductCardBgComponent implements OnInit {
   @Input() product: Product;
+  @Input() isCartItem: boolean = false;
 
   constructor(private dialog: MatDialog, private cartService: CartService) {}
 
@@ -31,5 +32,8 @@ export class ProductCardBgComponent implements OnInit {
 
   addToCart(product: Product) {
     this.cartService.addToCart(product);
+  }
+  removeFromCart(product: Product) {
+    this.cartService.removeFromCart(product);
   }
 }

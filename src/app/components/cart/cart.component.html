@@ -4,9 +4,11 @@
     <div *ngIf="cartItems.length === 0" class="empty-cart">
       Your cart is empty.
     </div>
-    <div *ngFor="let item of cartItems" class="cart-item" (click)="openModal(item)">
-      <h3>{{ item.name }}</h3>
-      <p>{{ item.description }}</p>
+    <div *ngFor="let item of cartItems" class="cart-item">
+      <app-product-card-bg
+        [product]="item"
+        [isCartItem]="true"
+      ></app-product-card-bg>
     </div>
   </mat-card-content>
 </mat-card>
