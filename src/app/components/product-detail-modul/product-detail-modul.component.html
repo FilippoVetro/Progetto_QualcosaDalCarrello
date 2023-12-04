@@ -1,10 +1,19 @@
-<h2 mat-dialog-title>{{ data.name }}</h2>
-<div mat-dialog-content class="scrollable-content">
-  <p>Product Description: {{ data.description }}</p>
-  <p>Price: {{ data.price }}</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="addToCart()">Add to Cart</button>
-  <button mat-button (click)="close()">Close</button>
-</div>
 
+
+<div class="modal-container">
+  <img [src]="data.image" alt="Product Image" class="modal-image" />
+  <div class="modal-content">
+    <h2 mat-dialog-title class="modal-title">{{ data.name }}</h2>
+    <hr class="modal-divider" />
+    <div mat-dialog-content class="scrollable-content">
+      <p class="modal-description">Product Description: {{ data.description }}</p>
+      <hr class="modal-divider" />
+      <p class="modal-price">Price: {{ data.price }}</p>
+    </div>
+    <hr class="modal-divider" />
+    <div mat-dialog-actions class="modal-actions">
+      <button mat-raised-button color="primary" (click)="addToCart()">Add to Cart</button>
+    </div>
+    <button mat-raised-button mat-dialog-close class="modal-close-button" (click)="close()">X</button>
+  </div>
+</div>
