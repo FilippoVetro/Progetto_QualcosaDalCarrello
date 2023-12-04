@@ -19,6 +19,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { SupportComponent } from './components/support/support.component';
 import { FormsModule } from '@angular/forms';
 import { ProductCardSmComponent } from './components/product-card-sm/product-card-sm.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ProductCardSmComponent } from './components/product-card-sm/product-car
     OrdersComponent,
     SupportComponent,
     CartComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
