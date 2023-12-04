@@ -12,12 +12,17 @@ import { Product } from 'src/app/types/product.model';
 })
 export class CartComponent implements OnInit {
   cartItems: Product[];
+  totalPrice: number;
 
   constructor(private dialog: MatDialog, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartService.cartItems$.subscribe((cartItems) => {
       this.cartItems = cartItems;
+      this.totalPrice = this.cartItems.reduce(
+        (total, item) => total + item.price,
+        0
+      );
     });
   }
 }

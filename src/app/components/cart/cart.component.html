@@ -1,14 +1,22 @@
 <h2>Cart</h2>
 <mat-card>
   <mat-card-content>
-    <div *ngIf="cartItems.length === 0" class="empty-cart">
-      Your cart is empty.
+    <div *ngIf="cartItems.length === 0; else notEmptyBlock" class="empty-cart">
+      <p>Your cart is empty.</p>
+      <a routerLink="../shop">Visit the Shop Page</a>
     </div>
-    <div *ngFor="let item of cartItems" class="cart-item">
-      <app-product-card-bg
-        [product]="item"
-        [isCartItem]="true"
-      ></app-product-card-bg>
-    </div>
+    <ng-template #notEmptyBlock>
+      <div class="cart-info">
+        <p>Cart Total: {{ totalPrice | currency }}</p>
+        <p>You have {{ cartItems.length }} item/s in your cart!</p>
+      </div>
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <app-product-card-bg
+          [product]="item"
+          [isCartItem]="true"
+        ></app-product-card-bg>
+        <p class="qty-lbl">x {{ item.quantity }}</p>
+      </div>
+    </ng-template>
   </mat-card-content>
 </mat-card>
