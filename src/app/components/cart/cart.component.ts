@@ -19,3 +19,4 @@ export class CartComponent implements OnInit {
     this.cartItems = this.cartService.getCartItems();
   }
 }
+

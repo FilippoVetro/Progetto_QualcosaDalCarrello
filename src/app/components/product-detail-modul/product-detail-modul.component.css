@@ -1,6 +1,52 @@
-.scrollable-content {
-    max-height: 200px;
-    overflow-y: auto;
-  }
 
+  
+  .modal-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 90%;
+    max-width: 600px;
+    max-height: 800px; 
+  }
+  
+  .modal-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 16px;
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .modal-description {
+    margin-bottom: 8px;
+  }
+  
+  .modal-price {
+    margin-top: 16px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content:flex-end;
+    margin-top: auto;
+    margin-bottom: 5%;
+  }
+  
+  .modal-close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
   
