@@ -9,3 +9,7 @@ export interface Product {
   brand: string;
   soldNumber?: number;
 }
+
+export interface ProductCart extends Product {
+  quantity: number;
+}

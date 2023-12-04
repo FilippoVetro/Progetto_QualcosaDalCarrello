@@ -1,22 +1,56 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../types/product.model';
+import { BehaviorSubject } from 'rxjs';
+import { Product, ProductCart } from '../types/product.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cartItems: Product[] = [];
+  private cartItemsSubject = new BehaviorSubject<ProductCart[]>([]);
+  cartItems$ = this.cartItemsSubject.asObservable();
 
-  constructor() {}
+  getCartItems(): ProductCart[] {
+    return this.cartItemsSubject.value;
+  }
 
   addToCart(product: Product) {
-    this.cartItems.push(product);
-  }
-  removeFromCart(product: Product) {
-    this.cartItems = this.cartItems.filter((item) => item.id !== product.id);
+    const currentCartItems = this.getCartItems();
+    const existingItem = currentCartItems.find(
+      (item) => item.id === product.id
+    );
+    const quantity = existingItem ? existingItem.quantity + 1 : 1;
+    const updatedProduct = { ...product, quantity };
+    if (existingItem) {
+      const updatedCartItems = currentCartItems.map((item) =>
+        item === existingItem ? updatedProduct : item
+      );
+      this.cartItemsSubject.next(updatedCartItems);
+      return;
+    }
+    const updatedCartItems = [...currentCartItems, updatedProduct];
+    this.cartItemsSubject.next(updatedCartItems);
   }
 
-  getCartItems() {
-    return this.cartItems;
+  removeFromCart(product: Product) {
+    const currentCartItems = this.getCartItems();
+    const existingItem = currentCartItems.find(
+      (item) => item.id === product.id
+    );
+    if (existingItem.quantity > 1) {
+      const quantity = existingItem.quantity - 1;
+      const updatedProduct = { ...product, quantity };
+
+      const updatedCartItems = currentCartItems.filter(
+        (item) => item.id !== updatedProduct.id
+      );
+      updatedCartItems.push(updatedProduct);
+      this.cartItemsSubject.next(updatedCartItems);
+      return;
+    }
+
+    const updatedCartItems = currentCartItems.filter(
+      (item) => item !== product
+    );
+    this.cartItemsSubject.next(updatedCartItems);
   }
 }

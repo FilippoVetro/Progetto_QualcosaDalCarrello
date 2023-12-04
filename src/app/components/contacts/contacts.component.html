@@ -1,41 +1,67 @@
 <mat-card>
-    <mat-card-header>
-      <mat-card-title>Contacts</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="map">
-        <img src="assets/images/map.png" alt="map">
-      </div>
-  
+  <mat-card-header>
+    <mat-card-title>Contacts</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="map-info">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2794.3873194597277!2d10.2086641!3d45.5425335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4781765d82658c43%3A0x6db3598250d1ee03!2sVia%20Milano%2C%2010%2C%2025126%20Brescia%20BS!5e0!3m2!1sit!2sit!4v1701698865510!5m2!1sit!2sit"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+
       <div class="address">
         <h2>Office Address</h2>
         <p>Qualcosa dal carrello</p>
         <p>Via Milano 10</p>
         <p>Brescia, Italy</p>
       </div>
-  
       <div class="phone-fax">
         <h2>Contact Information</h2>
         <p>Telephone: +1 123-456-7890</p>
         <p>Fax: +1 123-456-7891</p>
       </div>
-  
-      <div class="contact-form">
-        <h2>Contact Us</h2>
-        <form (ngSubmit)="submitContactForm(form.value)" #form="ngForm">
-          <mat-form-field>
-            <input matInput placeholder="Name" name="name" ngModel required>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Email" name="email" ngModel required email>
-          </mat-form-field>
-          <p></p>
-          <mat-form-field>
-            <textarea matInput placeholder="Message" name="message" ngModel required></textarea>
-          </mat-form-field>
-          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
-        </form>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  
+    </div>
+
+    <div class="contact-form">
+      <h2>Contact Us</h2>
+      <form (ngSubmit)="submitContactForm(form.value)" #form="ngForm">
+        <mat-form-field>
+          <input matInput placeholder="Name" name="name" ngModel required />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Email"
+            name="email"
+            ngModel
+            required
+            email
+          />
+        </mat-form-field>
+        <p></p>
+        <mat-form-field>
+          <textarea
+            matInput
+            placeholder="Message"
+            name="message"
+            ngModel
+            required
+          ></textarea>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
