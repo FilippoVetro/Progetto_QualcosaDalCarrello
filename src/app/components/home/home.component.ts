@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,10 @@ export class HomeComponent {
 
   // Dati di esempio per il carosello dei prodotti
   bestSellingProducts: string[] = ['Desktop', 'Laptop', 'Software', 'Hardware', 'Tablet', 'Accessories'];
+
+  getMostSoldProducts(): string[] {
+    return this.bestSellingProducts;
+  }
 
   // Dati di esempio per il grafico di affidabilità e percentuali di vendita
   reliabilityData = {
