@@ -1,9 +1,5 @@
-.map img {
-  height: 52vw;
-  margin-bottom: 20px;
-}
-
-.address, .phone-fax {
+.address,
+.phone-fax {
   margin-bottom: 20px;
 }
 
@@ -12,7 +8,6 @@
   flex-direction: column;
   align-items: center;
   background-color: #989898;
-  
 }
 
 .contact-form form {
@@ -23,4 +18,10 @@
 
 .contact-form button {
   align-self: flex-start;
-} 
+}
+
+.map-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
