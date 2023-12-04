@@ -1,1 +1,10 @@
-<p>product-detail-modul works!</p>
+<h2 mat-dialog-title>{{ data.name }}</h2>
+<div mat-dialog-content class="scrollable-content">
+  <p>Product Description: {{ data.description }}</p>
+  <p>Price: {{ data.price }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="addToCart()">Add to Cart</button>
+  <button mat-button (click)="close()">Close</button>
+</div>
+

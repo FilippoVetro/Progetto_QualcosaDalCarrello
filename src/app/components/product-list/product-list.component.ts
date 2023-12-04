@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/types/product.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductDetailModulComponent } from '../product-detail-modul/product-detail-modul.component';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -9,10 +12,11 @@ import { Product } from 'src/app/types/product.model';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  isGrid: boolean = true;
+  sizeCard: string = 'lg';
+  isGrid: boolean = false;
+  // isGrid: boolean = true;
   products: Product[];
   filteredProducts: Product[];
-  isCategory: boolean;
   categories: string[] = [
     'All',
     'Desktop',
@@ -32,10 +36,8 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
     if (this.route.snapshot.paramMap.get('id')) {
-      this.isCategory = true;
       this.selectCategory(this.route.snapshot.paramMap.get('category')!);
     } else {
-      this.isCategory = false;
       this.filteredProducts = this.products;
     }
   }
