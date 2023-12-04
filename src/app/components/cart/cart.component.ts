@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailModulComponent } from '../product-detail-modul/product-detail-modul.component';
@@ -16,6 +16,8 @@ export class CartComponent implements OnInit {
   constructor(private dialog: MatDialog, private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getCartItems();
+    this.cartService.cartItems$.subscribe((cartItems) => {
+      this.cartItems = cartItems;
+    });
   }
 }
