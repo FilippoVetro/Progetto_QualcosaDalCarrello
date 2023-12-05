@@ -18,8 +18,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { SupportComponent } from './components/support/support.component';
 import { ProductCardSmComponent } from './components/product-card-sm/product-card-sm.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { RefundCauseComponent } from './components/refund-cause/refund-cause.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,7 @@ import { RefundCauseComponent } from './components/refund-cause/refund-cause.com
     OrdersComponent,
     SupportComponent,
     CartComponent,
-    RefundCauseComponent
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +44,7 @@ import { RefundCauseComponent } from './components/refund-cause/refund-cause.com
     HttpClientInMemoryWebApiModule.forRoot(DataService),
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatSnackBarModule,
+    
   
   
   ],

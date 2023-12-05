@@ -1,23 +1,24 @@
 <div class="container">
-    <h1>Prodotti più venduti</h1>
-      <link rel="stylesheet" href="home.component.css">
+  <app-carousel></app-carousel>
 
- 
-      <h1>Prodotti più venduti</h1>
-          
-      <ul class="best-selling-products">
-        <li *ngFor="let product of getMostSoldProducts()">
-          <!-- Visualizzazione dei prodotti più venduti -->
-          <p>{{ product }}</p>
-        </li>  
-  
+  <h1>Prodotti più venduti</h1>
+  <link rel="stylesheet" href="home.component.css" />
+  <ul class="best-selling-products">
+    <li *ngFor="let product of getMostSoldProducts()">
+      <!-- Visualizzazione dei prodotti più venduti -->
+      <p>{{ product }}</p>
+    </li>
+
     <h2>Statistica di affidabilità</h2>
     <div class="reliability-info">
       <p>Prodotti venduti: {{ reliabilityData.totalProductsSold }}</p>
       <p>% Reclami: {{ reliabilityData.complaintPercentage }}%</p>
-      <p>Tempo di risposta del supporto: {{ reliabilityData.supportResponseTime }}</p>
+      <p>
+        Tempo di risposta del supporto:
+        {{ reliabilityData.supportResponseTime }}
+      </p>
     </div>
-  
+
     <h2>Percentuali di vendita per categoria</h2>
     <div class="category-sales">
       <ul>
@@ -29,4 +30,5 @@
         <li>Accessories: {{ categorySalesPercentages.accessories }}%</li>
       </ul>
     </div>
- 
+  </ul>
+</div>
