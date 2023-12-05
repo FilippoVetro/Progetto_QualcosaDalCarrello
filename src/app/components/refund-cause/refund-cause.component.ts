@@ -3,7 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-refund-cause',
   templateUrl: './refund-cause.component.html',
-  styleUrls: ['./refund-cause.component.css']
+  styleUrls: ['./refund-cause.component.css'],
 })
 export class RefundCauseComponent {
   refundCause: string;
