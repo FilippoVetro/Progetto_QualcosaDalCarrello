@@ -37,7 +37,7 @@
 <ng-template #refundModal let-modal>
   <h2>Refund Order</h2>
   <app-refund-cause (causeSelected)="refundCause = $event"></app-refund-cause>
-  <button mat-button (click)="refundOrder()">OK</button>
+  <button mat-button (click)="refundOrder(order.id)">OK</button>
   <button mat-button (click)="dismissRefundModal()">Close</button>
 </ng-template>
 
