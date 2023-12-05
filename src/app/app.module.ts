@@ -21,6 +21,7 @@ import { ProductCardSmComponent } from './components/product-card-sm/product-car
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { RefundCauseComponent } from './components/refund-cause/refund-cause.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     CartComponent,
     CarouselComponent,
     RefundCauseComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
