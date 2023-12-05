@@ -1,0 +1,7 @@
+
+<h2>Select the cause of the refund:</h2>
+<mat-radio-group [(ngModel)]="refundCause" (ngModelChange)="selectCause($event)">
+  <mat-radio-button value="Damaged">Damaged</mat-radio-button>
+  <mat-radio-button value="Wrong item">Wrong item</mat-radio-button>
+  <mat-radio-button value="Change of mind">Change of mind</mat-radio-button>
+</mat-radio-group>

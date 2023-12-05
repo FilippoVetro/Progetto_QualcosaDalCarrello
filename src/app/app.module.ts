@@ -17,8 +17,9 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { SupportComponent } from './components/support/support.component';
-import { FormsModule } from '@angular/forms';
 import { ProductCardSmComponent } from './components/product-card-sm/product-card-sm.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RefundCauseComponent } from './components/refund-cause/refund-cause.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ProductCardSmComponent } from './components/product-card-sm/product-car
     OrdersComponent,
     SupportComponent,
     CartComponent,
+    RefundCauseComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +44,10 @@ import { ProductCardSmComponent } from './components/product-card-sm/product-car
     CommonModule,
     HttpClientInMemoryWebApiModule.forRoot(DataService),
     BrowserAnimationsModule,
-    FormsModule,
     AppRoutingModule,
+    MatSnackBarModule,
+  
+  
   ],
   providers: [],
   bootstrap: [AppComponent],

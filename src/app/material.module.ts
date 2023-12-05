@@ -13,6 +13,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule,
+    MatTableModule,
+    MatRadioModule,
     
   ],
 })
