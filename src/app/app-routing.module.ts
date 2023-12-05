@@ -10,12 +10,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  {
-    path: 'shop',
-    component: ShopPageComponent,
-    children: [{ path: ':category', component: ShopPageComponent }],
-  },
-  // { path: 'shop/:category', component: ShopPageComponent },
+  { path: 'shop', component: ShopPageComponent },
+  { path: 'shop/:category', component: ShopPageComponent }, // Child route for category
   { path: 'navbar', component: NavbarComponent },
   { path: 'contacts', component: ContactsComponent },
   { path: 'orders', component: OrdersComponent },

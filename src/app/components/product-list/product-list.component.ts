@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/types/product.model';
-import { MatDialog } from '@angular/material/dialog';
-import { ProductDetailModulComponent } from '../product-detail-modul/product-detail-modul.component';
-import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -12,11 +9,10 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  sizeCard: string = 'lg';
-  isGrid: boolean = false;
-  // isGrid: boolean = true;
-  products: Product[];
-  filteredProducts: Product[];
+  sizeCard = 'lg';
+  isGrid = false;
+  products: Product[] = [];
+  filteredProducts: Product[] = [];
   categories: string[] = [
     'All',
     'Desktop',
@@ -26,7 +22,7 @@ export class ProductListComponent implements OnInit {
     'Tablet',
     'Accessories',
   ];
-  selectedCategory: string = 'All';
+  selectedCategory = 'All';
 
   constructor(
     private productService: ProductService,
@@ -35,18 +31,24 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
-    if (this.route.snapshot.paramMap.get('id')) {
-      this.selectCategory(this.route.snapshot.paramMap.get('category')!);
-    } else {
-      this.filteredProducts = this.products;
-    }
   }
 
   private getProducts() {
     this.productService.getProducts().subscribe((products) => {
       this.products = products;
-      this.filterProducts();
+      this.handleRouteParameters();
+      this.filterProducts(); // Move the filtering here
     });
+  }
+
+  private handleRouteParameters() {
+    const categoryParam = this.route.snapshot.paramMap.get('category');
+    if (categoryParam) {
+      this.selectCategory(categoryParam);
+      console.log(categoryParam);
+    } else {
+      this.filteredProducts = this.products;
+    }
   }
 
   selectCategory(category: string) {
@@ -59,12 +61,16 @@ export class ProductListComponent implements OnInit {
   }
 
   private filterProducts() {
-    if (this.selectedCategory === 'All') {
+    console.log('filterProduct', this.selectedCategory);
+
+    if (this.selectedCategory.toLowerCase() === 'all') {
       this.filteredProducts = this.products;
     } else {
       this.filteredProducts = this.products.filter(
-        (product) => product.category === this.selectedCategory
+        (product) =>
+          product.category.toLowerCase() === this.selectedCategory.toLowerCase()
       );
+      console.table(this.filteredProducts);
     }
   }
 }
