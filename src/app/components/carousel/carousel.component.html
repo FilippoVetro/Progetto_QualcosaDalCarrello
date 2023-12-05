@@ -1,0 +1,15 @@
+<div>
+  <ngx-slick-carousel
+    class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+    (init)="slickInit($event)"
+    (breakpoint)="breakpoint($event)"
+    (afterChange)="afterChange($event)"
+    (beforeChange)="beforeChange($event)"
+  >
+    <div ngxSlickItem *ngFor="let prod of mostSoldProducts" class="slide">
+      <app-product-card-bg [product]="prod"></app-product-card-bg>
+    </div>
+  </ngx-slick-carousel>
+</div>

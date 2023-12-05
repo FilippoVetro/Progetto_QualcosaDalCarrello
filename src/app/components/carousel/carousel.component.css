@@ -1,0 +1,14 @@
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+}
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+img {
+  object-fit: contain;
+}

@@ -20,6 +20,8 @@ import { SupportComponent } from './components/support/support.component';
 import { ProductCardSmComponent } from './components/product-card-sm/product-card-sm.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { RefundCauseComponent } from './components/refund-cause/refund-cause.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,9 +47,7 @@ import { RefundCauseComponent } from './components/refund-cause/refund-cause.com
     HttpClientInMemoryWebApiModule.forRoot(DataService),
     BrowserAnimationsModule,
     AppRoutingModule,
-    
-  
-  
+    SlickCarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
