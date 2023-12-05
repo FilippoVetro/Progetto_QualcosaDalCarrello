@@ -45,7 +45,6 @@ export class ProductListComponent implements OnInit {
     const categoryParam = this.route.snapshot.paramMap.get('category');
     if (categoryParam) {
       this.selectCategory(categoryParam);
-      console.log(categoryParam);
     } else {
       this.filteredProducts = this.products;
     }
@@ -61,8 +60,6 @@ export class ProductListComponent implements OnInit {
   }
 
   private filterProducts() {
-    console.log('filterProduct', this.selectedCategory);
-
     if (this.selectedCategory.toLowerCase() === 'all') {
       this.filteredProducts = this.products;
     } else {
@@ -70,7 +67,6 @@ export class ProductListComponent implements OnInit {
         (product) =>
           product.category.toLowerCase() === this.selectedCategory.toLowerCase()
       );
-      console.table(this.filteredProducts);
     }
   }
 }
