@@ -7,43 +7,46 @@ import { TemplateRef } from '@angular/core';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css']
+  styleUrls: ['./orders.component.css'],
 })
-export class OrdersComponent implements OnInit{
+export class OrdersComponent implements OnInit {
   orders: Order[] = [];
+  selectedOrder: Order;
   refundCause: string;
   @ViewChild('refundModal') refundModal: TemplateRef<any>;
 
-  constructor( private dialog: MatDialog, private orderService: OrderService) {}
-  
+  constructor(private dialog: MatDialog, private orderService: OrderService) {}
+
   ngOnInit() {
     this.orders = this.orderService.getOrders();
   }
 
   openRefundOrder(order: Order) {
+    console.log(order);
+    this.selectedOrder = order;
+
     const dialogRef = this.dialog.open(this.refundModal, {
-      data: { order}
+      data: { order },
     });
-    
-    dialogRef.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe((result) => {
       if (result === 'refund') {
-        this.refundOrder( order.id );
-        
       }
     });
-    
   }
 
-  refundOrder(orderId: number) {
-    const cause = this.refundCause;
-    this.orderService.refundOrder(orderId, this.refundCause);
-    // this.orders = this.orderService.getOrders();
-    // this.dialog.closeAll();
+  refundOrder() {
+    this.orderService.refundOrder(this.selectedOrder.id, this.refundCause);
+    this.orders = this.orderService.getOrders();
+    this.dialog.closeAll();
   }
 
   generateCSV(order: Order) {
-    const orderDetails = `Order ID: ${order.id}\nOrder Product: ${order.product}\nOrder Amount: ${order.amount}\nRefunded: ${order.refunded ? 'Yes' : 'No'}`;
-    const csvContent = this.orderService.generateCSV();
+    const orderDetails = `Order ID: ${order.id}\nOrder Product: ${
+      order.product
+    }\nOrder Amount: ${order.amount}\nRefunded: ${
+      order.refunded ? 'Yes' : 'No'
+    }`;
     const csv = `${orderDetails}\n\n`;
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
@@ -54,12 +57,9 @@ export class OrdersComponent implements OnInit{
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
-    
   }
 
   dismissRefundModal() {
     this.dialog.closeAll();
   }
-
 }
