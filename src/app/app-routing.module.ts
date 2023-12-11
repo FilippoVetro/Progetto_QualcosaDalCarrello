@@ -8,6 +8,7 @@ import { SupportComponent } from './components/support/support.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { canActivate } from './guards/can-activate.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +17,11 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'contacts', component: ContactsComponent },
   { path: 'orders', component: OrdersComponent },
-  { path: 'support', component: SupportComponent },
+  {
+    path: 'support',
+    component: SupportComponent,
+    canActivate: [() => canActivate(true)],
+  },
   { path: 'cart', component: CartComponent },
   { path: '**', component: NotfoundComponent },
 ];
