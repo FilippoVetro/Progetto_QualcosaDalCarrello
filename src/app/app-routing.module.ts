@@ -12,6 +12,7 @@ import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-
 import { canMatch } from './guards/can-match.guard';
 import { DashboardManagerComponent } from './components/dashboard-manager/dashboard-manager.component';
 import { DashboardEveryOneComponent } from './components/dashboard-every-one/dashboard-every-one.component';
+import { canDeactivateGuard } from './guards/can-deactivate.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,7 +34,11 @@ const routes: Routes = [
   { path: 'shop/:category', component: ShopPageComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'contacts', component: ContactsComponent },
-  { path: 'orders', component: OrdersComponent },
+  {
+    path: 'orders',
+    component: OrdersComponent,
+    canDeactivate: [canDeactivateGuard],
+  },
   {
     path: 'support',
     component: SupportComponent,
