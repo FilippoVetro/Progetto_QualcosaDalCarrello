@@ -22,6 +22,9 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { RefundCauseComponent } from './components/refund-cause/refund-cause.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { DashboardEveryOneComponent } from './components/dashboard-every-one/dashboard-every-one.component';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { DashboardManagerComponent } from './components/dashboard-manager/dashboard-manager.component';
 
 @NgModule({
   declarations: [
