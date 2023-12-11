@@ -25,6 +25,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { DashboardEveryOneComponent } from './components/dashboard-every-one/dashboard-every-one.component';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 import { DashboardManagerComponent } from './components/dashboard-manager/dashboard-manager.component';
+import { ProductFilterPipe } from './product-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DashboardManagerComponent } from './components/dashboard-manager/dashbo
     CarouselComponent,
     RefundCauseComponent,
     NotfoundComponent,
+    ProductFilterPipe,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,8 @@ import { Product } from 'src/app/types/product.model';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
+  searchTerm: string = '';
+
   sizeCard = 'lg';
   isGrid = false;
   products: Product[] = [];
