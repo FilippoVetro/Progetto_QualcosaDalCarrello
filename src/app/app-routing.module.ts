@@ -8,29 +8,28 @@ import { SupportComponent } from './components/support/support.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 import { canMatch } from './guards/can-match.guard';
 import { DashboardManagerComponent } from './components/dashboard-manager/dashboard-manager.component';
-import { DashboardEveryOneComponent } from './components/dashboard-every-one/dashboard-every-one.component';
 import { canDeactivateGuard } from './guards/can-deactivate.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  {
-    path: 'dashboard',
-    canMatch: [() => canMatch(['ADMIN'])],
-    loadComponent: () => DashboardAdminComponent,
-  },
-  {
-    path: 'dashboard',
-    canMatch: [() => canMatch(['MANAGER'])],
-    loadComponent: () => DashboardManagerComponent,
-  },
-  {
-    path: 'dashboard',
-    loadComponent: () => DashboardEveryOneComponent,
-  },
+  // {
+  //   path: 'dashboard',
+  //   canMatch: [() => canMatch(['ADMIN'])],
+  //   loadComponent: () => DashboardAdminComponent,
+  // },
+  // {
+  //   path: 'dashboard',
+  //   canMatch: [() => canMatch(['MANAGER'])],
+  //   loadComponent: () => DashboardManagerComponent,
+  // },
+  // {
+  //   path: 'dashboard',
+  //   loadComponent: () => DashboardEveryOneComponent,
+  // },
   { path: 'shop', component: ShopPageComponent },
+  { path: 'dashboard', component: DashboardManagerComponent },
   { path: 'shop/:category', component: ShopPageComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'contacts', component: ContactsComponent },

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -22,10 +22,13 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { RefundCauseComponent } from './components/refund-cause/refund-cause.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { DashboardEveryOneComponent } from './components/dashboard-every-one/dashboard-every-one.component';
-import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
-import { DashboardManagerComponent } from './components/dashboard-manager/dashboard-manager.component';
 import { ProductFilterPipe } from './product-filter.pipe';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { appReducers } from './state/app.reducers';
+import { AppEffects } from './state/app.effects';
+import { DashboardManagerComponent } from './components/dashboard-manager/dashboard-manager.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { ProductFilterPipe } from './product-filter.pipe';
     ProductListComponent,
     NavbarComponent,
     ProductCardBgComponent,
+    DashboardManagerComponent,
     ProductCardSmComponent,
     HomeComponent,
     ShopPageComponent,
@@ -55,6 +59,9 @@ import { ProductFilterPipe } from './product-filter.pipe';
     BrowserAnimationsModule,
     AppRoutingModule,
     SlickCarouselModule,
+    StoreModule.forRoot({ app: appReducers }, {}),
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,1 +1,4 @@
-<p>dashboard-manager works!</p>
+<p>dashboard-manager works!!</p>
+<ng-container *ngFor="let p of prodotti$ | async">
+  <p>{{ p | json }}</p>
+</ng-container>
