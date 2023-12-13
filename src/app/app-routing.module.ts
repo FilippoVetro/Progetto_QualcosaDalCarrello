@@ -37,7 +37,7 @@ const routes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent,
-    canDeactivate: [canDeactivateGuard],
+    // canDeactivate: [canDeactivateGuard],
   },
   {
     path: 'support',
