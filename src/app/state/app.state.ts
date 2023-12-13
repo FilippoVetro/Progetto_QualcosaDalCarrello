@@ -1,9 +1,5 @@
-export interface AppState {
-  prodotti : Prodotto[]
-}
+import { Product } from '../types/product.model';
 
-export interface Prodotto {
-  id : string;
-  nome : string;
-  prezzo : string;
+export interface AppState {
+  prodotti: Product[];
 }
