@@ -1,25 +1,60 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
-import { getProdotti } from './app.actions';
 import * as AppActions from './app.actions';
-import { exhaustMap, map, of } from 'rxjs';
+import { exhaustMap, map, catchError, switchMap } from 'rxjs/operators';
+import { ProductService } from '../services/product.service';
 import { Product } from '../types/product.model';
-import { products } from '../data';
-import { DataService } from '../services/data.service';
+import { of } from 'rxjs';
 
 @Injectable()
 export class AppEffects {
-  prodotti: Product[] = products;
+  constructor(
+    private actions$: Actions,
+    private productService: ProductService
+  ) {}
+
   getProdottiEffect$ = createEffect(() =>
     this.actions$.pipe(
-      ofType('[prodotti] get all'),
+      ofType(AppActions.getProdotti),
       exhaustMap(() =>
-        of(this.prodotti).pipe(
-          map((prodotti) => AppActions.getProdottiSuccess({ prodotti }))
+        this.productService.getProducts().pipe(
+          map((prodotti) => AppActions.getProdottiSuccess({ prodotti })),
+          catchError((error) => of(AppActions.getProdottiFailure({ error })))
         )
       )
     )
   );
-  constructor(private actions$: Actions) {}
+
+  filterProductsEffect$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AppActions.filterProducts),
+      switchMap((action) =>
+        this.productService.getProducts().pipe(
+          map((allProducts) => {
+            const filteredProducts = this.filterProducts(
+              allProducts,
+              action.filterCriteria
+            );
+            return AppActions.filterProductsSuccess({ filteredProducts });
+          }),
+          catchError((error) => of(AppActions.filterProductsFailure({ error })))
+        )
+      )
+    )
+  );
+
+  private filterProducts(
+    allProducts: Product[],
+    filterCriteria: string
+  ): Product[] {
+    // Implement your filtering logic here
+    if (filterCriteria.toLowerCase() === 'all') {
+      return allProducts;
+    } else {
+      return allProducts.filter(
+        (product) =>
+          product.category.toLowerCase() === filterCriteria.toLowerCase()
+      );
+    }
+  }
 }

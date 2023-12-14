@@ -30,7 +30,11 @@
     />
   </div>
   <div class="products-container" [class.grid]="isGrid">
-    <div *ngFor="let product of filteredProducts | productFilter : searchTerm">
+    <div
+      *ngFor="
+        let product of filteredProducts$ | async | productFilter : searchTerm
+      "
+    >
       <div *ngIf="isGrid; then gridView; else listView"></div>
       <ng-template #listView>
         <app-product-card-bg

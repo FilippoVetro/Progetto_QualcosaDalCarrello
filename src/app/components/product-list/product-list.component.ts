@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from 'src/app/services/product.service';
+import { Store } from '@ngrx/store';
+import { filterProducts } from 'src/app/state/app.actions';
+import { filteredProdottiSelector } from 'src/app/state/app.selector';
+import { AppState } from 'src/app/state/app.state';
 import { Product } from 'src/app/types/product.model';
 
 @Component({
@@ -10,11 +13,8 @@ import { Product } from 'src/app/types/product.model';
 })
 export class ProductListComponent implements OnInit {
   searchTerm: string = '';
-
   sizeCard = 'lg';
   isGrid = false;
-  products: Product[] = [];
-  filteredProducts: Product[] = [];
   categories: string[] = [
     'All',
     'Desktop',
@@ -25,50 +25,43 @@ export class ProductListComponent implements OnInit {
     'Accessories',
   ];
   selectedCategory = 'All';
+  @Output('select') selection: EventEmitter<Product> =
+    new EventEmitter<Product>();
+  filteredProducts$ = this.store.select(filteredProdottiSelector);
 
-  constructor(
-    private productService: ProductService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private route: ActivatedRoute, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.getProducts();
   }
 
   private getProducts() {
-    this.productService.getProducts().subscribe((products) => {
-      this.products = products;
-      this.handleRouteParameters();
-      this.filterProducts(); // Move the filtering here
-    });
+    this.store.dispatch(filterProducts({ filterCriteria: 'All' }));
   }
 
+  // TODO
   private handleRouteParameters() {
     const categoryParam = this.route.snapshot.paramMap.get('category');
     if (categoryParam) {
       this.selectCategory(categoryParam);
     } else {
-      this.filteredProducts = this.products;
+      this.selectCategory('All');
     }
   }
 
   selectCategory(category: string) {
     this.selectedCategory = category;
-    this.filterProducts();
+    this.store.dispatch(
+      filterProducts({ filterCriteria: this.selectedCategory })
+    );
   }
 
   changeView() {
     this.isGrid = !this.isGrid;
   }
 
-  private filterProducts() {
-    if (this.selectedCategory.toLowerCase() === 'all') {
-      this.filteredProducts = this.products;
-    } else {
-      this.filteredProducts = this.products.filter(
-        (product) =>
-          product.category.toLowerCase() === this.selectedCategory.toLowerCase()
-      );
-    }
+  selectProduct(product: Product) {
+    console.log('Product selected:', product);
+    this.selection.emit(product);
   }
 }
